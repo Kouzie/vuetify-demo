@@ -1,0 +1,6 @@
+# https://editorconfig.org/
+[*.{js,jsx,ts,tsx,vue}]
+indent_size = 2
+indent_style = space
+trim_trailing_whitespace = false
+insert_final_newline = true
