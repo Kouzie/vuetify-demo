@@ -17,7 +17,11 @@
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-navigation-drawer app v-model="drawer">
+    <v-navigation-drawer app v-model="drawer" :src="require('@/assets/sitebar.jpg')" dark>
+      <template v-slot:img="props">
+        <v-img :gradient="gradient" v-bind="props">
+        </v-img>
+      </template>
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h6">
@@ -40,6 +44,8 @@
           :key="item.title"
           link
           :to="item.to"
+          active-class="primary"
+          class="py-1"
         >
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
@@ -52,7 +58,9 @@
       </v-list>
     </v-navigation-drawer>
     <v-main>
-      <router-view/>
+      <v-container fluid>
+        <router-view/>
+      </v-container>
     </v-main>
   </v-app>
 </template>
@@ -63,13 +71,21 @@ export default {
   name: 'App',
   data() {
     return {
+      gradient: 'rgba(0,0,0,.7), rgba(0,0,0,.7)',
       drawer: true,
       items: [
         {title: 'Dashboard', icon: 'mdi-view-dashboard', to: "/"},
         {title: 'GridSystem', icon: 'mdi-view-dashboard', to: "/grid-system"},
+        {title: 'Breakpoints', icon: 'mdi-view-dashboard', to: "/breakpoints"},
+        {title: 'GridListPage', icon: 'mdi-view-dashboard', to: "/grid-list-page"},
+        {title: 'Typography', icon: 'mdi-view-dashboard', to: "/typography"},
+        {title: 'Tables', icon: 'mdi-view-dashboard', to: "/tables"},
+        {title: 'Forms', icon: 'mdi-view-dashboard', to: "/forms"},
+        {title: 'Buttons', icon: 'mdi-view-dashboard', to: "/buttons"},
+        {title: 'Icons', icon: 'mdi-view-dashboard', to: "/icons"},
       ],
       right: null,
     }
   },
-};
+}
 </script>
