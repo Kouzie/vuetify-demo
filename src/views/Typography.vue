@@ -9,7 +9,7 @@
           <v-card class="pa-3 text-h2 primary lighten-5">
             contents
           </v-card>
-          <v-card class="pa-3 text-h2 secondary darken-3">
+          <v-card class="pa-3 text-h2 secondary">
             contents
           </v-card>
           <v-card class="pa-3 text-h2 error">

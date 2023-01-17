@@ -1,16 +1,14 @@
 <template>
-  <div>
-    <v-app>
-      <v-app-bar app/>
-      <v-navigation-drawer app/>
-      <v-main>
-        <v-container fluid>
-          contents input
-        </v-container>
-      </v-main>
-      <v-footer app/>
-    </v-app>
-  </div>
+  <v-app>
+    <v-app-bar app class="red"/>
+    <v-navigation-drawer app class="blue"/>
+    <v-main class="green">
+      <v-container fluid class="white">
+        contents input
+      </v-container>
+    </v-main>
+    <v-footer app/>
+  </v-app>
 </template>
 
 <script>
