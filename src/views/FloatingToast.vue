@@ -24,34 +24,44 @@
     </v-card>
     <v-card>
 
-      <div v-for="[key, value] in alertMap" :key="key">
-        <v-alert :type="value.type">{{ value.message }}</v-alert>
+      <div v-for="alert in alertList" :key="alert.key">
+        <v-alert :type="alert.type">{{ alert.message }}</v-alert>
       </div>
     </v-card>
   </v-container>
 </template>
 
 <script>
+import Vue from "vue";
+
 export default {
   data() {
     return {
-      alertMap: new Map() // JS Map 은 순서보장
+      alertList: [] // JS Map 은 순서보장
     }
   },
   created() {
-    this.alertMap.set(1, {type: 'info', message: 'message1'});
-    this.alertMap.set(2, {type: 'info', message: 'message2'});
-    this.alertMap.set(3, {type: 'info', message: 'message3'});
+    this.alertList.push({key: 1, type: 'info', message: 'message1'});
+    this.alertList.push({key: 2, type: 'info', message: 'message2'});
+    this.alertList.push({key: 3, type: 'info', message: 'message3'});
   },
   methods: {
     addAlert(type, message) {
-      console.log("test")
       let key = new Date().getTime()
       let obj = {key, type, message};
-      this.alertMap.set(key, obj);
-      console.log(this.alertMap)
+      Vue.set(this.alertList, this.alertList.length, obj);
+      console.log(this.alertList)
       setTimeout(() => {
-        this.alertMap.delete(key);
+        let index = -1;
+        for (let i = 0; i < this.alertList.length; i++) {
+          console.log(this.alertList[i].key, key)
+          if (this.alertList[i].key === key) {
+            index = i;
+          }
+        }
+        if (index > 0) {
+          Vue.delete(this.alertList, index)
+        }
       }, 2000)
     }
   },
